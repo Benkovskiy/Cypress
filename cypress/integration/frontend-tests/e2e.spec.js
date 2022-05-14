@@ -11,32 +11,33 @@
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
 
-describe('example to-do app', () => {
-  beforeEach(() => {
+describe('Delivery UI page', () => {
+  //beforeEach(() => {
     // Cypress starts out with a blank slate for each test
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
-    cy.visit('https://example.cypress.io/todo')
-  })
+    //cy.visit('https://www.google.com')
+ // })
 
-  it('displays two todo items by default', () => {
+  it('displays google logo image by default', () => {
     // We use the `cy.get()` command to get all elements that match the selector.
     // Then, we use `should` to assert that there are two matched items,
     // which are the two default items.
-    cy.get('.todo-list li').should('have.length', 2)
+    cy.visit('https://www.google.com')
+    cy.get('.lnXdpd').should('exist')
 
     // We can go even further and check that the default todos each contain
     // the correct text. We use the `first` and `last` functions
     // to get just the first and last matched elements individually,
     // and then perform an assertion with `should`.
-    cy.get('.todo-list li').first().should('have.text', 'Pay electric bill')
-    cy.get('.todo-list li').last().should('have.text', 'Walk the dog')
+    //cy.get('.todo-list li').first().should('have.text', 'Pay electric bill')
+    //cy.get('.todo-list li').last().should('have.text', 'Walk the dog')
   })
 
-  it('can add new todo items', () => {
+  it('can paste something to search field', () => {
     // We'll store our item text in a variable so we can reuse it
-    const newItem = 'Feed the cat'
+    const newItem = 'Master of Code Global'
 
     // Let's get the input element and use the `type` command to
     // input our new list item. After typing the content of our item,
@@ -44,7 +45,11 @@ describe('example to-do app', () => {
     // This input has a data-test attribute so we'll use that to select the
     // element in accordance with best practices:
     // https://on.cypress.io/selecting-elements
-    cy.get('[data-test=new-todo]').type(`${newItem}{enter}`)
+    cy.get('.SDkEP').should('exist')
+    cy.get('.QCzoEc > svg').should('exist')
+    cy.get('.ly0Ckb').should('exist')
+    cy.get('.goxjub').should('exist')
+    cy.get('.gLFyf').type(`${newItem}{enter}`)
 
     // Now that we've typed our new item, let's check that it actually was added to the list.
     // Since it's the newest item, it should exist as the last element in the list.
